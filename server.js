@@ -19,8 +19,9 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Server error' });
 });
 
+const port = process.env.HOST_PORT|| 3000;
 
 // Start the server
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
 });
