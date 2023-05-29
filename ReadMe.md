@@ -4,7 +4,7 @@ The provided code is a backend server implementation using Express.js framework,
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 BASE URL: https://blogger-backend-705n.onrender.com
-
+example:https://blogger-backend-705n.onrender.com/api/posts
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 To interact with the RESTful API provided in the code using Postman, you can perform various HTTP requests to different endpoints. Here's a list of the available endpoints and their usages:
