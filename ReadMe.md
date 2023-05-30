@@ -10,7 +10,7 @@ example:https://blogger-backend-705n.onrender.com/api/posts
 To interact with the RESTful API provided in the code using Postman, you can perform various HTTP requests to different endpoints. Here's a list of the available endpoints and their usages:
 
 1. User Registration:
-   - Endpoint: `POST /api/register`
+   - Endpoint: `POST /api/auth/register`
    - Usage: Register a new user by sending a POST request with the user's details (username and password) in the request body.
 
 {
@@ -21,7 +21,7 @@ To interact with the RESTful API provided in the code using Postman, you can per
 
 
 2. User Login:
-   - Endpoint: `POST /api/login`
+   - Endpoint: `POST /api/auth/login`
    - Usage: Authenticate a user by sending a POST request with the user's credentials (username and password) in the request body. On successful authentication, the server responds with a JWT token that can be used for subsequent requests requiring authentication.
 {
   "username": "your_username",
