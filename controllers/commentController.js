@@ -1,15 +1,10 @@
-const { Post, Comment } = require('../models/model');
-
-
-
-const { Post, Comment } = require('../models');
-
+const {User,Post,Comment}  =require('../models/model');
 
 
 // Create a new comment on a post
 exports.createComment = async (req, res, next) => {
   try {
-    const {postId }= req.params;
+    const postId = req.params.postId;
     const { content } = req.body;
     const { userId } = req;
 
