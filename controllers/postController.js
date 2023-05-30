@@ -6,10 +6,22 @@ const {User,Post,Comment}  =require('../models/model')
 exports.createPost = async (req, res, next) => {
   const { title, content } = req.body;
 
+   // Check if any required fields are missing
+   const requiredFields = [];
+   if (!title) requiredFields.push('title');
+   if (!content) requiredFields.push('content');
+
+   if (requiredFields.length > 0) {
+     return res.status(400).json({ message: `The following fields are required: ${requiredFields.join(', ')}` });
+   }
+  
+  
   try {
     // Get the user ID from the request
     const userId = req.userId;
 
+    
+    
     // Create the post in the database
     const post = await Post.create({ title, content, userId });
     
@@ -67,8 +79,19 @@ exports.updatePost =async (req, res, next) => {
   try {
     const { postId } = req.params;
     const { title, content } = req.body;
+    
+     // Check if any required fields are missing
+   const requiredFields = [];
+   if (!title) requiredFields.push('title');
+   if (!content) requiredFields.push('content');
+
+   if (requiredFields.length > 0) {
+     return res.status(400).json({ message: `The following fields are required: ${requiredFields.join(', ')}` });
+   }
+    
     const userId = req.userId; // Assuming req.userId contains the user ID
 
+  
     const post = await Post.findByPk(postId);
 
     if (!post) {
