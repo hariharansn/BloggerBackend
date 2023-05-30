@@ -1,23 +1,26 @@
 const { Post, Comment } = require('../models/model');
 
+
+
+const { Post, Comment } = require('../models');
+
+
+
 // Create a new comment on a post
 exports.createComment = async (req, res, next) => {
   try {
-    const { postId } = req.params;
+    const postId = req.params.postId;
     const { content } = req.body;
-    const { userId } = req; // Assuming the user ID is available in the request object
+    const { userId } = req;
 
-    
-  
-   // Check if any required fields are missing
-   const requiredFields = [];
-   if (!content) requiredFields.push('content');
+    // Check if any required fields are missing
+    const requiredFields = [];
+    if (!content) requiredFields.push('content');
 
-   if (requiredFields.length > 0) {
-     return res.status(400).json({ message: `The following fields are required: ${requiredFields.join(', ')}` });
-   }
+    if (requiredFields.length > 0) {
+      return res.status(400).json({ message: `The following fields are required: ${requiredFields.join(', ')}` });
+    }
 
-    
     const post = await Post.findByPk(postId);
 
     if (!post) {
@@ -32,6 +35,8 @@ exports.createComment = async (req, res, next) => {
     next(err);
   }
 };
+
+
 
 // Get all comments of a post
 exports.getCommentsByPostId = async (req, res, next) => {
