@@ -7,6 +7,17 @@ exports.createComment = async (req, res, next) => {
     const { content } = req.body;
     const { userId } = req; // Assuming the user ID is available in the request object
 
+    
+  
+   // Check if any required fields are missing
+   const requiredFields = [];
+   if (!content) requiredFields.push('content');
+
+   if (requiredFields.length > 0) {
+     return res.status(400).json({ message: `The following fields are required: ${requiredFields.join(', ')}` });
+   }
+
+    
     const post = await Post.findByPk(postId);
 
     if (!post) {
@@ -72,6 +83,17 @@ exports.updateComment = async (req, res, next) => {
     const { postId, commentId } = req.params;
     const { content } = req.body;
     const { userId } = req;
+
+    
+    
+  
+   // Check if any required fields are missing
+   const requiredFields = [];
+   if (!content) requiredFields.push('content');
+
+   if (requiredFields.length > 0) {
+     return res.status(400).json({ message: `The following fields are required: ${requiredFields.join(', ')}` });
+   }
 
     const post = await Post.findByPk(postId);
 
